@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="mainPane" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.zeroapps.mathtrain.controllers.SettingsSceneController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="187.20000610351562" minHeight="0.0" prefHeight="80.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="314.4" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="315.5999755859375" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="315.5999755859375" minHeight="0.0" prefHeight="80.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="315.5999755859375" minHeight="10.0" prefHeight="44.80002441406248" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="277.1999801635742" minHeight="10.0" prefHeight="55.59995117187498" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <VBox alignment="CENTER_RIGHT" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <children>
+            <Label text="Папка со статистикой">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label opacity="0.5" text="Указывает в какой папке сохранить файл со статистикой" textAlignment="RIGHT" wrapText="true" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
+         <children>
+            <TextField fx:id="statsDirectoryTextField" editable="false" />
+            <Button mnemonicParsing="false" onAction="#onBrowseButtonAction" text="Обзор..." />
+         </children>
+      </HBox>
+      <VBox alignment="CENTER_RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+         <children>
+            <Label text="Имя файла со статистикой">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label opacity="0.5" text="Указывает имя файла со статистикой (без расширения)" textAlignment="RIGHT" wrapText="true" />
+         </children>
+      </VBox>
+      <TextField fx:id="statsFileTextField" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <VBox alignment="CENTER_RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+         <children>
+            <Label text="Зерно генерации">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="Определяет набор задач, которые будут сгенерированы" />
+               </tooltip>
+            </Label>
+            <Label opacity="0.5" text="Определяет набор сгенерированных задач (одно зерно = один набор), оставьте пустым для случайного значения" textAlignment="RIGHT" wrapText="true" />
+         </children>
+      </VBox>
+      <TextField fx:id="seedTextField" maxHeight="-Infinity" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
+         <children>
+            <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelButtonAction" text="Отмена">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#onSaveButtonAction" text="Сохранить">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onResetButtonAction" text="Сбросить">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Label text="Скорость анимаций" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <children>
+            <Slider fx:id="animationSpeedSlider" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="0.5" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+            <CheckBox fx:id="animationsOffCheckBox" mnemonicParsing="false" onAction="#onAnimationsOffAction" text="Без анимаций">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </CheckBox>
+         </children>
+      </VBox>
+      <Button mnemonicParsing="false" onAction="#onAboutButtonAction" text="О программе" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</GridPane>

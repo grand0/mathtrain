@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.zeroapps.mathtrain.controllers.TrainingSceneController">
+   <top>
+       <GridPane hgap="10.0" prefHeight="52.0" prefWidth="600.0" style="-fx-background-color: #DDD;" BorderPane.alignment="CENTER">
+           <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+           <Button mnemonicParsing="false" onAction="#exitButtonPressed" text="Выйти">
+              <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+              </GridPane.margin>
+              <cursor>
+                  <Cursor fx:constant="HAND" />
+              </cursor>
+              <font>
+                  <Font size="14.0" />
+              </font>
+           </Button>
+           <Label fx:id="correctAnswerPlate" opacity="0.0" text="Правильный ответ!" textFill="#6430ff" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+              <font>
+                  <Font size="18.0" />
+              </font>
+           </Label>
+           <Label fx:id="wrongAnswerPlate" opacity="0.0" prefHeight="36.0" text="Неправильный ответ!" textFill="#ff5400" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+              <font>
+                  <Font size="18.0" />
+              </font>
+           </Label>
+           <GridPane fx:id="statisticsPanel" prefHeight="50.0" prefWidth="98.0" GridPane.columnIndex="2">
+               <columnConstraints>
+                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.00006103515625" minWidth="10.0" prefWidth="77.9999267578125" />
+                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.20001220703125" minWidth="10.0" prefWidth="25.600073242187506" />
+               </columnConstraints>
+               <rowConstraints>
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <GridPane.margin>
+                   <Insets bottom="5.0" left="80.0" right="10.0" top="5.0" />
+               </GridPane.margin>
+               <Label text="Верно:" />
+               <Label text="Неверно:" GridPane.rowIndex="1" />
+               <Label prefHeight="15.0" prefWidth="81.0" text="Пропущено:" GridPane.rowIndex="2" />
+               <Label fx:id="correctAnswersCounter" text="0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+               <Label fx:id="skippedAnswersCounter" text="0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+               <Label fx:id="wrongAnswersCounter" text="0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+           </GridPane>
+           <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="54.0" prefWidth="194.0" text="Начать" GridPane.columnIndex="1">
+              <font>
+                  <Font size="24.0" />
+              </font>
+           </Button>
+       </GridPane>
+   </top>
+   <center>
+      <GridPane maxHeight="300.0" maxWidth="600.0" prefHeight="300.0" prefWidth="600.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="185.39999389648438" minHeight="10.0" prefHeight="185.39999389648438" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="225.59999847412107" minHeight="10.0" prefHeight="88.60001220703126" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="225.59999847412107" minHeight="10.0" prefHeight="27.79998779296875" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="currentTaskPlate" alignment="CENTER" prefHeight="234.0" prefWidth="601.0" text="Нажмите кнопку Начать" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowSpan="3">
+               <font>
+                  <Font name="System Bold" size="58.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <ImageView fx:id="imageView" fitHeight="114.0" fitWidth="335.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </ImageView>
+            <ProgressBar fx:id="targetProgressBar" prefHeight="12.0" prefWidth="576.0" progress="0.0" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <Label fx:id="progressPlate" alignment="CENTER" prefHeight="20.0" prefWidth="50.0" text="0%" translateY="-3.0" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="remainProgressPlate" onMouseClicked="#onRemainProgressPlateClicked" text="0 / 0" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="gradePlate" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+   </center>
+   <bottom>
+       <HBox alignment="CENTER" prefHeight="47.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+           <Label text="Ответ:">
+              <font>
+                  <Font size="16.0" />
+              </font>
+           </Label>
+           <Spinner fx:id="answerSpinner" disable="true" editable="true" prefWidth="158.0" />
+           <Button fx:id="answerButton" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#answerButtonPressed" text="Ответить">
+              <cursor>
+                  <Cursor fx:constant="HAND" />
+              </cursor>
+           </Button>
+           <Button fx:id="skipButton" disable="true" mnemonicParsing="false" onAction="#skipTaskButtonPressed" style="-fx-border-color: #f44; -fx-border-radius: 3;" text="Пропустить" />
+       </HBox>
+   </bottom>
+</BorderPane>
